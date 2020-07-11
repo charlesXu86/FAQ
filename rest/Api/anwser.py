@@ -16,17 +16,25 @@ from model.FAQ import FAQ
 
 
 def get_anwser(msg):
-
     result = {
-        'domain':'',
-        'anwser':''
+        'domain': '',
+        'content': '',
+        'type': 0,
+        'classId': 0,
+        'confidence': 0.978787,
+        'errorTime': 0,
+        'questionId': 0,
+        'transferFlag': 0,
+        'relatedQuestion': [],
+        'questionList': [],
+        'link': 'zrg'
     }
 
     robot = FAQ(usedVec=False)
 
     anwser = robot.answer(msg, 'simple_pos')
 
-    result['user_query'] = msg
-    result['anwser'] = anwser
+    # result['user_query'] = msg
+    result['content'] = anwser
 
     return result

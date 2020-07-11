@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 from rest.Api.QA_server import qa_server
+from rest.Api.IM_server import im_server
 
 urlpatterns = [
-    path('chatbot', qa_server)
+    path('chatbot', qa_server),
+    path('imbot', im_server)
 
 ]

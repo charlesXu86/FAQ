@@ -19,8 +19,13 @@ from django.urls import path, include
 from rest.Api.QA_server import qa_server
 from rest.Api.IM_server import im_server
 
+from rest.Api.new_train import train_model
+from rest.Api.update_train import train_model_update
+
 urlpatterns = [
     path('chatbot', qa_server),
-    path('imbot', im_server)
+    path('imbot', im_server),
+    path('newtrain', train_model),
+    path('trainup', train_model_update)
 
 ]

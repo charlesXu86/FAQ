@@ -33,8 +33,7 @@ def im_server(request):
             # jsonData = json.loads(request.GET)
             # question = jsonData["question"]
             question = request.GET.get('question')
-            # if "tenantid" in jsonData:
-            #     tenantid = jsonData["tenantid"]
+            # tenantid = request.GET.get("tenantid", default='')
             # if "sessionid" in jsonData:
             #     sessionid = jsonData["sessionid"]
             # if "userid" in jsonData:

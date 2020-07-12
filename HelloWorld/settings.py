@@ -74,7 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'HelloWorld.wsgi.application'
 
-# 跨域允许的请求方式，可以使用默认值，默认的请求方式为:
+# 跨域允许的请求方式，可以使用默认值，默认的请求方式为 :
 # from corsheaders.defaults import default_methods
 CORS_ALLOW_METHODS = (
     'GET',

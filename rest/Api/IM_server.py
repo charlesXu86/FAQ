@@ -29,20 +29,22 @@ def im_server(request):
     if request.method == 'GET':
 
         try:
-            jsonData = json.loads(request.body.decode('utf-8'))
-            question = jsonData["question"]
-            if "tenantid" in jsonData:
-                tenantid = jsonData["tenantid"]
-            if "sessionid" in jsonData:
-                sessionid = jsonData["sessionid"]
-            if "userid" in jsonData:
-                userid = jsonData["userid"]
-            if "platform" in jsonData:
-                platform = jsonData["platform"]
-            if "language" in jsonData:
-                language = jsonData["language"]
-            if "userdata" in jsonData:
-                userdata = jsonData["userdata"]
+            data = request.GET
+            # jsonData = json.loads(request.GET)
+            # question = jsonData["question"]
+            question = request.GET.get('question')
+            # if "tenantid" in jsonData:
+            #     tenantid = jsonData["tenantid"]
+            # if "sessionid" in jsonData:
+            #     sessionid = jsonData["sessionid"]
+            # if "userid" in jsonData:
+            #     userid = jsonData["userid"]
+            # if "platform" in jsonData:
+            #     platform = jsonData["platform"]
+            # if "language" in jsonData:
+            #     language = jsonData["language"]
+            # if "userdata" in jsonData:
+            #     userdata = jsonData["userdata"]
             localtime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             result = get_anwser(question)
             dic = {

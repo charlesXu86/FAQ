@@ -30,13 +30,19 @@ def im_server(request):
 
         try:
             jsonData = json.loads(request.body.decode('utf-8'))
-            tenantid = jsonData["tenantid"]
-            sessionid = jsonData["sessionid"]
-            userid = jsonData["userid"]
-            platform = jsonData["platform"]
             question = jsonData["question"]
-            language = jsonData["language"]
-            userdata = jsonData["userdata"]
+            if "tenantid" in jsonData:
+                tenantid = jsonData["tenantid"]
+            if "sessionid" in jsonData:
+                sessionid = jsonData["sessionid"]
+            if "userid" in jsonData:
+                userid = jsonData["userid"]
+            if "platform" in jsonData:
+                platform = jsonData["platform"]
+            if "language" in jsonData:
+                language = jsonData["language"]
+            if "userdata" in jsonData:
+                userdata = jsonData["userdata"]
             localtime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             result = get_anwser(question)
             dic = {

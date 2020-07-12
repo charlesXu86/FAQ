@@ -26,7 +26,7 @@ def train_model_update(request):
         try:
             jsonData = json.loads(request.body.decode('utf-8'))
 
-            msg = jsonData["skill"]
+            msg = jsonData["robotTechnologyAbilityId"]
             localtime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             result = 'train ok'
             dic = {

@@ -18,7 +18,7 @@ import json
 import logging
 import datetime
 
-from rest.Api.anwser import get_anwser
+from rest.Api.imanwser import get_imanwser
 
 from rest.Api.LogUtils import Logger
 
@@ -45,7 +45,7 @@ def im_server(request):
             # if "userdata" in jsonData:
             #     userdata = jsonData["userdata"]
             localtime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            result = get_anwser(question)
+            result = get_imanwser(question)
             dic = {
                 "desc": "Success",
                 "ques": question,

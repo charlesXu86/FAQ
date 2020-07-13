@@ -31,7 +31,7 @@ def get_imanwser(msg):
     }
 
     robotUserData = {
-        "showevaluate": 0,
+        "showEvaluate": 0,
         "answer_type": "faq",
         "is_many_answer": False,
         "highLight": 0,  # 是否需要前端进行高亮显示，一般在触发敏感词严重时会触发。

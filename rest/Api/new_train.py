@@ -9,7 +9,7 @@
  
 @Time    :   2020/7/12 4:08 下午
  
-@Desc    :
+@Desc    :   新技能训练
  
 """
 from django.http import JsonResponse

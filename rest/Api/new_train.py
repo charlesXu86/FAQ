@@ -31,10 +31,11 @@ def train_model(request):
             skillId = jsonData["robotTechnologyAbilityId"]
             localtime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             result = train_skill(skillId)
+            results = "正在训练"
             dic = {
                 "desc": "Success",
                 "ques": result,
-                "result": result,
+                "result": results,
                 "time": localtime
             }
             log_res = json.dumps(dic, ensure_ascii=False)

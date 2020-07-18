@@ -16,6 +16,7 @@
 import hashlib
 import web
 
+
 class Handle(object):
     def GET(self):
         try:
@@ -26,7 +27,7 @@ class Handle(object):
             timestamp = data.timestamp
             nonce = data.nonce
             echostr = data.echostr
-            token = "chatbot" #请按照公众平台官网\基本配置中信息填写
+            token = "chatbot"  # 请按照公众平台官网\基本配置中信息填写
 
             list = [token, timestamp, nonce]
             list.sort()

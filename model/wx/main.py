@@ -14,7 +14,7 @@
 """
 
 import web
-from Chatbot_Retrieval_model.wx.handle import Handle
+from model.wx.handle import Handle
 
 urls = (
     '/chatbot', 'Handle',

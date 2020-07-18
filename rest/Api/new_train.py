@@ -34,7 +34,7 @@ def train_model(request):
             results = "正在训练"
             dic = {
                 "desc": "Success",
-                "ques": result,
+                "ques": skillId,
                 "result": results,
                 "time": localtime
             }

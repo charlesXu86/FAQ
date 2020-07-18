@@ -17,6 +17,8 @@ import json
 import logging
 import datetime
 
+from model.train.train_skill import train_skill
+
 logger = logging.getLogger(__name__)
 
 
@@ -26,12 +28,12 @@ def train_model(request):
         try:
             jsonData = json.loads(request.body.decode('utf-8'))
 
-            msg = jsonData["robotTechnologyAbilityId"]
+            skillId = jsonData["robotTechnologyAbilityId"]
             localtime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            result = 'train ok'
+            result = train_skill(skillId)
             dic = {
                 "desc": "Success",
-                "ques": msg,
+                "ques": result,
                 "result": result,
                 "time": localtime
             }

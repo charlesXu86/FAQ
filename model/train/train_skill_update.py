@@ -40,7 +40,7 @@ def train_skill_up(skillId):
     data["nlu"] = nlu_en
     data["stories"] = stories_en
     data["force"] = False
-    data["save_to_default_model_directory"] = True
+    data["save_to_default_model_directory"] = False
 
 
     data_en = """{
@@ -59,6 +59,6 @@ def train_skill_up(skillId):
 
     return results.text
 
-if __name__=='__main__':
-    skillId = '2222'
-    train_skill(skillId=skillId)
+# if __name__=='__main__':
+#     skillId = '2222'
+#     train_skill(skillId=skillId)

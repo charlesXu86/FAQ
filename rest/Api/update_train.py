@@ -17,6 +17,8 @@ import json
 import logging
 import datetime
 
+from model.train.train_skill_update import train_skill_up
+
 logger = logging.getLogger(__name__)
 
 
@@ -28,11 +30,12 @@ def train_model_update(request):
 
             msg = jsonData["robotTechnologyAbilityId"]
             localtime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            result = 'train ok'
+            result = train_skill_up(msg)
+            results = 'train ok'
             dic = {
                 "desc": "Success",
                 "ques": msg,
-                "result": result,
+                "result": results,
                 "time": localtime
             }
             log_res = json.dumps(dic, ensure_ascii=False)

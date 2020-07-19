@@ -32,7 +32,7 @@ class MySQL():
         self.db = pymysql.connect(host=self.host, port=3306, user=self.username, passwd=self.password, db=self.database)
         logger.info("Connect database {} successful".format(self.database))
 
-    def insert_data(self, session_id, content, talks, intent_name, confidence):
+    def insert_data(self, session_id, content, intent_name, create_user_id, score):
         """
         插入数据
         :param content: 交互文本
@@ -44,7 +44,8 @@ class MySQL():
         """
         cursor = self.db.cursor()
 
-        sql = "insert into data_center_dialogue_log_bak(id, session_id, content, talks, robot_intention_purpose_id, intent_name, confidence, is_deleted, gmt_create, gmt_modified, create_user_id, modified_user_id)Values(null,'%s', '%s', '%s',null,'%s','%s',0,null,null,null,null)"%(session_id, content, talks, intent_name, confidence)
+        # sql = "insert into data_center_dialogue_log_bak(id, session_id, content, talks, robot_intention_purpose_id, intent_name, confidence, is_deleted, gmt_create, gmt_modified, create_user_id, modified_user_id)Values(null,'%s', '%s', '%s',null,'%s','%s',0,null,null,null,null)"%(session_id, content, talks, intent_name, confidence)
+        sql = "insert into data_center_dialogue_log(id, session_id, robot_intention_purpose_id, content, intent_name, is_deleted, gmt_create, gmt_modified, create_user_id, modified_user_id, score)Values(null, '%s', null,'%s', '%s',0, null,null, '%s', null, '%s')" % (session_id, content, intent_name, create_user_id, score)
 
         cursor.execute(sql)
         self.db.commit()
@@ -86,14 +87,14 @@ class Mongo():
                 print(detail)
                 if 'user' in detail['event']:
                     content = detail['text']
-                    talks = detail['event']
+                    talks = 1
                     intent_name = detail['parse_data']['intent']['name']
                     intent_confidence = detail['parse_data']['intent']['confidence']
-                    MySQL().insert_data(sender_id, content,talks,intent_name,intent_confidence)
+                    MySQL().insert_data(sender_id, content, intent_name, talks, intent_confidence)
                 if 'bot' in detail['event']:
                     content = detail['text']
-                    talks = detail['event']
-                    MySQL().insert_data(sender_id, content, talks, None, None)
+                    talks = 0
+                    MySQL().insert_data(sender_id, content, None, talks, None)
 
 
 db = Mongo()
@@ -116,8 +117,6 @@ db = Mongo()
 
 
 if __name__ == '__main__':
-    #
-    #
     # judgementId = '0d5ce792-69cb-494a-8eca-2725b5eea1de'
     # find_MONGO_one(judgementId)
     # db.get_count()

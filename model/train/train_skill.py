@@ -23,7 +23,7 @@ def train_skill(skillId):
     :return:
     """
     data = {}
-    url = 'http://172.18.86.21:9008/model/train'
+    url = 'http://47.103.73.160:9005/model/train'
 
     # domain = "intents:\n  - greet\n  - goodbye\n  - weather\n  - weather_info\n\n  actions:\n  - utter_greet\n  - utter_ask_address\n  - utter_ask_date-time\n  - utter_working_on_it\n  - utter_report_weather\n  - utter_goodbye\n\ntemplates:\n  utter_greet:\n - text: \"您好，我是小笨，有什么可以帮您的？\"\n\nutter_goodbye:\n - text: \"再见\"\n\n"
     # config = "language: en\npipeline: supervised_embeddings\npolicies:\n  - name: MemoizationPolicy\n  - name: KerasPolicy"

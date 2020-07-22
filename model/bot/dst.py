@@ -31,8 +31,8 @@ def nlu(senderid,msg, filled_slot):
     :param msg: 用户query
     :return:
     """
-    url1 = 'http://47.103.73.160:9006/api/intent'
-    url2 = 'http://47.103.73.160:9006/api/cluener'
+    url1 = 'http://172.16.28.43:9006/api/intent'
+    url2 = 'http://172.16.28.43:9006/api/cluener'
     params = {
         # "sender": senderid,
         "msg": msg

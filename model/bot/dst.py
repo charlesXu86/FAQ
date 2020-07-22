@@ -9,7 +9,7 @@
  
 @Time    :   2020/7/22 11:19 上午
  
-@Desc    :
+@Desc    :   对话状态
  
 """
 import requests

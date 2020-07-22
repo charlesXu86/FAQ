@@ -20,7 +20,7 @@ import jieba.posseg as pseg
 from collections import deque
 import pathlib
 
-from model.utils import (get_logger, similarity)
+from model.util import (get_logger, similarity)
 
 jieba.dt.tmp_dir = "./"
 jieba.default_logger.setLevel(logging.ERROR)

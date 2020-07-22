@@ -1,42 +1,41 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 @Author  :   Xu
-
+ 
 @Software:   PyCharm
-
-@File    :   payback_class_controller.py
-
-@Time    :   2019-06-10 14:44
-
-@Desc    :  还款意愿分类接口封装
-
-'''
+ 
+@File    :   chatbot.py
+ 
+@Time    :   2020/7/22 9:58 上午
+ 
+@Desc    :
+ 
+"""
 
 from django.http import JsonResponse
 import json
 import logging
 import datetime
 
-from rest.Api.anwser import get_anwser
-
-# from Chatbot_Retrival_rest.Api.util.LogUtils import Logger
+from model.bot.chatbot import nlu
 
 logger = logging.getLogger(__name__)
 
 
-def qa_server(request):
+def bot(request):
     if request.method == 'POST':
 
         try:
             jsonData = json.loads(request.body.decode('utf-8'))
-            sender = jsonData
-            msg = jsonData["message"]
+
+            senderId = jsonData["sender"]
+            message = jsonData["message"]
             localtime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            result = get_anwser(msg)
+            result = nlu(senderId, message)
             dic = {
                 "desc": "Success",
-                "ques": msg,
+                "ques": message,
                 "result": result,
                 "time": localtime
             }

@@ -31,8 +31,10 @@ def nlu(senderid,msg, filled_slot):
     :param msg: 用户query
     :return:
     """
-    url1 = 'http://172.16.28.43:9006/api/intent'
-    url2 = 'http://172.16.28.43:9006/api/cluener'
+    # url1 = 'http://172.16.28.43:9006/api/intent'
+    # url2 = 'http://172.16.28.43:9006/api/cluener'
+    url1 = 'http://172.18.86.20:9007/api/intent'
+    url2 = 'http://172.18.86.20:9007/api/cluener'
     params = {
         # "sender": senderid,
         "msg": msg
@@ -84,6 +86,7 @@ def weather_answer_bot(intent, slot, filled_slot):
             delta = (date_time_number - now).days
             if delta > 3:
                 anwser = '小笨只能查询最近三天的天气哦'
+                filled_slot.clear()
             elif delta < 3 and delta >= 0:
                 condition = sw.get_weather_by_city_and_day(filled_slot['address'], date_time_number)
                 anwser = forecast_to_text(filled_slot['address'], condition)
@@ -108,10 +111,8 @@ def forecast_to_text(address, condition):
     return msg
 
 
-
-
-if __name__=='__main__':
-    sender = '2020109'
-    message = '小笨，明天杭州天气'
-    y = nlu(sender, msg=message)
-    print(y)
+# if __name__=='__main__':
+#     sender = '2020109'
+#     message = '小笨，明天杭州天气'
+#     y = nlu(sender, msg=message)
+#     print(y)

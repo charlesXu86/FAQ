@@ -23,6 +23,7 @@ from rest.Api.new_train import train_model
 from rest.Api.update_train import train_model_update
 from rest.Api.chatbot import bot
 from rest.Api.mybot import mybot
+from rest.Api.rasa_bot import rasabot
 
 urlpatterns = [
     path('chatbot', qa_server),
@@ -30,6 +31,7 @@ urlpatterns = [
     path('newtrain', train_model),
     path('trainup', train_model_update),
     path('bot', bot),
-    path('mybot', mybot)
+    path('rbot', mybot),
+    path('mybot', rasabot)
 
 ]

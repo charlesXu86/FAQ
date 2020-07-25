@@ -32,10 +32,10 @@ def rasa_nlu(senderid,msg):
     :param msg: 用户query
     :return:
     """
-    # url1 = 'http://172.16.28.43:9006/api/intent'
-    # url2 = 'http://172.16.28.43:9006/api/cluener'
-    url1 = 'http://172.18.86.20:9007/api/intent'
-    url2 = 'http://172.18.86.20:9007/api/cluener'
+    url1 = 'http://172.16.28.43:9006/api/intent'
+    url2 = 'http://172.16.28.43:9006/api/cluener'
+    # url1 = 'http://172.18.86.20:9007/api/intent'
+    # url2 = 'http://172.18.86.20:9007/api/cluener'
     params = {
         # "sender": senderid,
         "msg": msg
@@ -89,7 +89,7 @@ def requestRasabotServer(userid, content):
     :return:  json格式响应数据
     """
     params = {'sender': userid, 'message': content}
-    botIp = '172.18.86.21'
+    botIp = '172.16.28.43'
     botPort = '9008'
     # rasa使用rest channel
     # https://rasa.com/docs/rasa/user-guide/connectors/your-own-website/#rest-channels

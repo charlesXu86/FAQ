@@ -99,8 +99,8 @@ def requestRasabotServer(userid, content):
     :return:  json格式响应数据
     """
     params = {'sender': userid, 'message': content}
-    # botIp = '172.16.28.43'
-    botIp = '172.18.86.21'
+    botIp = '172.16.28.43'
+    # botIp = '172.18.86.21'
     botPort = '9008'
     # rasa使用rest channel
     # https://rasa.com/docs/rasa/user-guide/connectors/your-own-website/#rest-channels

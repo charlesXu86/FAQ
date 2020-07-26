@@ -17,12 +17,11 @@ import json
 import datetime
 
 from model.bot.time_utils import get_time_unit
+from model.bot.process import data_process
 from model.service.weather_api.seniverse import SeniverseWeatherAPI
 
 api_secret = "Sq6NfAburbGs9MGQb"
 sw = SeniverseWeatherAPI(api_secret)
-
-# filled_slot = {}
 
 
 def rasa_nlu(senderid,msg):
@@ -41,6 +40,9 @@ def rasa_nlu(senderid,msg):
         "msg": msg
     }
     slot = {}
+
+    # 对msg进行部分预处理
+    msg = data_process(msg)
     response1 = requests.post(url=url1,data=json.dumps(params))
     intent = json.loads(response1.text)['result']     # 意图
     # if '天气' in msg:
@@ -68,6 +70,14 @@ def rasa_nlu(senderid,msg):
         entity = 'card'
         value = u'借记卡'
         slot.update({entity: value})
+    if '银行卡' in msg:
+        entity = 'card'
+        value = u'银行卡'
+        slot.update({entity: value})
+    if '储蓄卡' in msg:
+        entity = 'card'
+        value = u'储蓄卡'
+        slot.update({entity: value})
     # for one in slots:
     #     entity = one['entity']
     #     value = one['value']
@@ -89,7 +99,8 @@ def requestRasabotServer(userid, content):
     :return:  json格式响应数据
     """
     params = {'sender': userid, 'message': content}
-    botIp = '172.16.28.43'
+    # botIp = '172.16.28.43'
+    botIp = '172.18.86.21'
     botPort = '9008'
     # rasa使用rest channel
     # https://rasa.com/docs/rasa/user-guide/connectors/your-own-website/#rest-channels

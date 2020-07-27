@@ -55,6 +55,8 @@ def rasa_nlu(senderid,msg):
         intent = 'thanks'
     if '卡号' in msg:
         intent = 'car_info'
+    if '挂失' in msg:
+        intent = 'guashi'
     if len(msg) < 5 and '没有' in msg:
         intent = 'goodbye'
     if intent == 'weather':

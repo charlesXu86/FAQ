@@ -28,7 +28,8 @@ logger = get_logger('faqrobot', logfile="faqrobot.log")
 
 basedir = str(pathlib.Path(os.path.abspath(__file__)).parent.parent)
 
-faqdata = basedir + '/data/FAQ.txt'
+faqdata = basedir + '/data/FAQ_wine.txt'
+
 
 class zhishiku():
     def __init__(self, q):
@@ -40,6 +41,7 @@ class zhishiku():
 
     def __str__(self):
         return 'q=' + str(self.q) + '\na=' + str(self.a) + '\nq_word=' + str(self.q_word) + '\nq_vec=' + str(self.q_vec)
+
 
 class FAQ(object):
     def __init__(self, zhishitxt=faqdata, lastTxtLen=10, usedVec=True):
@@ -54,23 +56,23 @@ class FAQ(object):
         self.zhishiku = []
         with open(self.zhishitxt, encoding='utf-8') as f:
             txt = f.readlines()
-            abovetxt = 0    # 上一行的种类： 0空白/注释  1答案   2问题
-            for t in txt:   # 读取FAQ文本文件
+            abovetxt = 0  # 上一行的种类： 0空白/注释  1答案   2问题
+            for t in txt:  # 读取FAQ文本文件
                 t = t.strip()
                 if not t or t.startswith('#'):
                     abovetxt = 0
                 elif abovetxt != 2:
-                    if t.startswith('【问题】'): # 输入第一个问题
+                    if t.startswith('【问题】'):  # 输入第一个问题
                         self.zhishiku.append(zhishiku(t[4:]))
                         abovetxt = 2
-                    else:       # 输入答案文本（非第一行的）
+                    else:  # 输入答案文本（非第一行的）
                         self.zhishiku[-1].a += '\n' + t
                         abovetxt = 1
                 else:
-                    if t.startswith('【问题】'): # 输入问题（非第一行的）
+                    if t.startswith('【问题】'):  # 输入问题（非第一行的）
                         self.zhishiku[-1].q.append(t[4:])
                         abovetxt = 2
-                    else:       # 输入答案文本
+                    else:  # 输入答案文本
                         self.zhishiku[-1].a += t
                         abovetxt = 1
 
@@ -145,6 +147,7 @@ class FAQ(object):
             outtxt = self.maxSimTxt(intxt, simType=simType)
             # 输出回复内容，并计入日志
         return outtxt
+
 
 if __name__ == '__main__':
     data = '/home/xsq/nlp_code/Chatbot_Retrieval/data/FAQ/FAQ.txt'

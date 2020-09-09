@@ -128,7 +128,7 @@ class FAQ(object):
         logger.info('maxSim=' + format(maxSim.sim, '.0%'))
 
         if maxSim.sim < simCondision:
-            return '抱歉，我没有理解您的意思。请您咨询红酒相关的话题。'
+            return '抱歉，我没有理解您的意思。请您咨询发布会相关的话题。'
 
         return maxSim.a
 

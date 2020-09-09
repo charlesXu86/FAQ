@@ -28,7 +28,7 @@ logger = get_logger('faqrobot', logfile="faqrobot.log")
 
 basedir = str(pathlib.Path(os.path.abspath(__file__)).parent.parent)
 
-faqdata = basedir + '/data/FAQ_wine.txt'
+faqdata = basedir + '/data/FAQ_wine_v2.txt'
 
 
 class zhishiku():

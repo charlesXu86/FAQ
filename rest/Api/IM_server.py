@@ -77,7 +77,7 @@ def im_server2(request):
             }
             log_res = json.dumps(dic, ensure_ascii=False)
             logger.info(log_res)
-            return JsonResponse(dic)
+            return JsonResponse(dic, charset='utf-8')
         except Exception as e:
             logger.info(e)
     else:

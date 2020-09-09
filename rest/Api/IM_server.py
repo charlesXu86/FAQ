@@ -18,7 +18,7 @@ import json
 import logging
 import datetime
 
-from rest.Api.imanwser import get_imanwser
+from rest.Api.imanwser import get_imanwser, get_imanwser2
 
 from rest.Api.LogUtils import Logger
 
@@ -49,6 +49,29 @@ def im_server(request):
             dic = {
                 "desc": "Success",
                 "ques": question,
+                "result": result,
+                "time": localtime
+            }
+            log_res = json.dumps(dic, ensure_ascii=False)
+            logger.info(log_res)
+            return JsonResponse(dic)
+        except Exception as e:
+            logger.info(e)
+    else:
+        return JsonResponse({"desc": "Bad request"}, status=400)
+
+
+def im_server2(request):
+    if request.method == 'POST':
+
+        try:
+            jsonData = json.loads(request.body.decode('utf-8'))
+            msg = jsonData["message"]
+            localtime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            result = get_imanwser2(msg)
+            dic = {
+                "desc": "Success",
+                "ques": msg,
                 "result": result,
                 "time": localtime
             }

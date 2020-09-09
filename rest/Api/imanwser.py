@@ -51,3 +51,17 @@ def get_imanwser(msg):
     result['robotUserData'] = robotUserData
 
     return result
+
+
+def get_imanwser2(msg):
+    result = {
+        'content': '',
+        'confidence': 0.978787
+    }
+    robot = FAQ(usedVec=False)
+    anwser = robot.answer(msg, 'simple_pos')
+
+    result['user_query'] = msg
+    result['content'] = anwser
+
+    return result
